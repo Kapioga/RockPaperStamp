@@ -5,6 +5,22 @@
 [ext_resource type="Texture2D" uid="uid://c5i4y1i887ve2" path="res://Assets/Test Assets/RockTest.png" id="2_pp5dm"]
 [ext_resource type="Texture2D" uid="uid://e40ykufgp0bh" path="res://Assets/Test Assets/ScissorsTest.png" id="3_covo5"]
 
+[sub_resource type="Animation" id="Animation_mqj78"]
+resource_name = "Hover"
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Paper:scale")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.5, 1),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Vector2(0.2, 0.2), Vector2(0.3, 0.3), Vector2(0.2, 0.2)]
+}
+
 [sub_resource type="Animation" id="Animation_8m3i7"]
 length = 0.001
 tracks/0/type = "value"
@@ -42,22 +58,6 @@ tracks/2/keys = {
 "transitions": PackedFloat32Array(1),
 "update": 0,
 "values": [Vector2(0.2, 0.2)]
-}
-
-[sub_resource type="Animation" id="Animation_mqj78"]
-resource_name = "Hover"
-loop_mode = 1
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("Paper:scale")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.5, 1),
-"transitions": PackedFloat32Array(1, 1, 1),
-"update": 0,
-"values": [Vector2(0.2, 0.2), Vector2(0.3, 0.3), Vector2(0.2, 0.2)]
 }
 
 [sub_resource type="Animation" id="Animation_jcaq8"]
@@ -100,13 +100,7 @@ _data = {
 "Scissors Hover": SubResource("Animation_x2h6g")
 }
 
-[node name="Buttons" type="Control"]
-layout_mode = 3
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
+[node name="Buttons" type="Node2D"]
 script = ExtResource("1_syhpx")
 
 [node name="Paper" type="Sprite2D" parent="."]
@@ -121,7 +115,7 @@ libraries = {
 "": SubResource("AnimationLibrary_7dr51")
 }
 
-[node name="TextureRect" type="TextureRect" parent="Paper"]
+[node name="PaperRect" type="TextureRect" parent="Paper"]
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
@@ -131,6 +125,9 @@ offset_right = -445.538
 offset_bottom = -464.66
 grow_horizontal = 2
 grow_vertical = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+metadata/_edit_use_anchors_ = true
 
 [node name="Scissors" type="Sprite2D" parent="."]
 position = Vector2(0, 504)
@@ -139,12 +136,11 @@ texture = ExtResource("3_covo5")
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="Scissors"]
 root_node = NodePath("../..")
-autoplay = "RockHover"
 libraries = {
 "": SubResource("AnimationLibrary_7dr51")
 }
 
-[node name="TextureRect" type="TextureRect" parent="Scissors"]
+[node name="ScissorsRect" type="TextureRect" parent="Scissors"]
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
@@ -154,6 +150,9 @@ offset_right = -445.538
 offset_bottom = -464.66
 grow_horizontal = 2
 grow_vertical = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+metadata/_edit_use_anchors_ = true
 
 [node name="Rock" type="Sprite2D" parent="."]
 position = Vector2(0, 301)
@@ -166,7 +165,7 @@ libraries = {
 "": SubResource("AnimationLibrary_7dr51")
 }
 
-[node name="TextureRect" type="TextureRect" parent="Rock"]
+[node name="RockRect" type="TextureRect" parent="Rock"]
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
@@ -176,10 +175,13 @@ offset_right = -445.538
 offset_bottom = -464.66
 grow_horizontal = 2
 grow_vertical = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+metadata/_edit_use_anchors_ = true
 
-[connection signal="mouse_entered" from="Paper/TextureRect" to="." method="_on_texture_rect_mouse_entered"]
-[connection signal="mouse_exited" from="Paper/TextureRect" to="." method="_on_texture_rect_mouse_exited"]
-[connection signal="mouse_entered" from="Scissors/TextureRect" to="." method="_on_texture_rect_mouse_entered"]
-[connection signal="mouse_exited" from="Scissors/TextureRect" to="." method="_on_texture_rect_mouse_exited"]
-[connection signal="mouse_entered" from="Rock/TextureRect" to="." method="_on_texture_rect_mouse_entered"]
-[connection signal="mouse_exited" from="Rock/TextureRect" to="." method="_on_texture_rect_mouse_exited"]
+[connection signal="mouse_entered" from="Paper/PaperRect" to="." method="_on_paper_rect_mouse_entered"]
+[connection signal="mouse_exited" from="Paper/PaperRect" to="." method="_on_paper_rect_mouse_exited"]
+[connection signal="mouse_entered" from="Scissors/ScissorsRect" to="." method="_on_scissors_rect_mouse_entered"]
+[connection signal="mouse_exited" from="Scissors/ScissorsRect" to="." method="_on_scissors_rect_mouse_exited"]
+[connection signal="mouse_entered" from="Rock/RockRect" to="." method="_on_rock_rect_mouse_entered"]
+[connection signal="mouse_exited" from="Rock/RockRect" to="." method="_on_rock_rect_mouse_exited"]

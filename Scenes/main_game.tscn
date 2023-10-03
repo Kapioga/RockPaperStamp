@@ -10,10 +10,7 @@
 position = Vector2(242, 352)
 
 [node name="Buttons" parent="." instance=ExtResource("2_r87gm")]
-offset_left = 551.0
-offset_top = 149.0
-offset_right = 551.0
-offset_bottom = 149.0
+position = Vector2(588, 22)
 
 [node name="Enemy" parent="." instance=ExtResource("3_x2rl5")]
 position = Vector2(871, 383)

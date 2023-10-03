@@ -1,4 +1,4 @@
-extends Control
+extends Node2D
 
 @onready var animation_player = $Paper/AnimationPlayer
 @onready var paper = $Paper
@@ -9,41 +9,40 @@ var entered: bool = false
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
-	paper_hover_over()
-
+	pass
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
-	pass
+	hover_over()
 
+#Button Master Controls
+func hover_over():
+	_on_paper_rect_mouse_entered()
+	_on_paper_rect_mouse_exited()
+	_on_scissors_rect_mouse_entered()
+	_on_scissors_rect_mouse_exited()
+	_on_rock_rect_mouse_entered()
+	_on_rock_rect_mouse_exited()
+
+
+ # --------------------------------------------------------
 #Paper Button
-func paper_hover_over():
-	_on_texture_rect_mouse_entered()
-	_on_texture_rect_mouse_exited()
-
-func _on_texture_rect_mouse_entered():
+func _on_paper_rect_mouse_entered():
 	animation_player.play("PaperHover")
 
-func _on_texture_rect_mouse_exited():
+func _on_paper_rect_mouse_exited():
 	animation_player.stop()
 	
-#Paper Button
-func paper_hover_over():
-	_on_texture_rect_mouse_exited()
+#Scissors Button
+func _on_scissors_rect_mouse_entered():
+	animation_player.play("Scissors Hover")
 
-func _on_texture_rect_mouse_entered():
-	animation_player.play("PaperHover")
-
-func _on_texture_rect_mouse_exited():
+func _on_scissors_rect_mouse_exited():
 	animation_player.stop()
-	
+
 #Rock Button
-func Rock_hover_over():
-	_on_texture_rect_mouse_entered()
-	_on_texture_rect_mouse_exited()
-
-func _on_texture_rect_mouse_entered():
+func _on_rock_rect_mouse_entered():
 	animation_player.play("RockHover")
 
-func _on_texture_rect_mouse_exited():
+func _on_rock_rect_mouse_exited():
 	animation_player.stop()
