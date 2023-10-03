@@ -1,3 +1,19 @@
-[gd_scene format=3 uid="uid://dtpf40o360s6c"]
+[gd_scene load_steps=4 format=3 uid="uid://dtpf40o360s6c"]
+
+[ext_resource type="PackedScene" uid="uid://h3gsar3owbo5" path="res://Scenes/player.tscn" id="1_uw5ou"]
+[ext_resource type="PackedScene" uid="uid://bd5arwqw48cg7" path="res://Scenes/buttons.tscn" id="2_r87gm"]
+[ext_resource type="PackedScene" uid="uid://b6viirqoxiv1i" path="res://Scenes/enemy.tscn" id="3_x2rl5"]
 
 [node name="Main Game" type="Node2D"]
+
+[node name="Player" parent="." instance=ExtResource("1_uw5ou")]
+position = Vector2(242, 352)
+
+[node name="Buttons" parent="." instance=ExtResource("2_r87gm")]
+offset_left = 551.0
+offset_top = 149.0
+offset_right = 551.0
+offset_bottom = 149.0
+
+[node name="Enemy" parent="." instance=ExtResource("3_x2rl5")]
+position = Vector2(871, 383)
