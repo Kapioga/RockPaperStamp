@@ -29,9 +29,11 @@ func hover_over():
 #Paper Button
 func _on_paper_rect_mouse_entered():
 	animation_player.play("PaperHover")
+	entered = true
 
 func _on_paper_rect_mouse_exited():
 	animation_player.stop()
+	entered = false
 	
 #Scissors Button
 func _on_scissors_rect_mouse_entered():
