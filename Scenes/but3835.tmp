@@ -1,0 +1,187 @@
+[gd_scene load_steps=10 format=3 uid="uid://bd5arwqw48cg7"]
+
+[ext_resource type="Texture2D" uid="uid://dascuhalm4cti" path="res://Assets/Test Assets/Papertest.png" id="1_mcap6"]
+[ext_resource type="Script" path="res://Script/buttons.gd" id="1_syhpx"]
+[ext_resource type="Texture2D" uid="uid://c5i4y1i887ve2" path="res://Assets/Test Assets/RockTest.png" id="2_pp5dm"]
+[ext_resource type="Texture2D" uid="uid://e40ykufgp0bh" path="res://Assets/Test Assets/ScissorsTest.png" id="3_covo5"]
+
+[sub_resource type="Animation" id="Animation_mqj78"]
+resource_name = "Hover"
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Paper:scale")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.5, 1),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Vector2(0.2, 0.2), Vector2(0.3, 0.3), Vector2(0.2, 0.2)]
+}
+
+[sub_resource type="Animation" id="Animation_8m3i7"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Paper:scale")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(0.2, 0.2)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Rock:scale")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(0.2, 0.2)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Scissors:scale")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(0.2, 0.2)]
+}
+
+[sub_resource type="Animation" id="Animation_jcaq8"]
+resource_name = "Hover"
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Rock:scale")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.5, 1),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Vector2(0.2, 0.2), Vector2(0.3, 0.3), Vector2(0.2, 0.2)]
+}
+
+[sub_resource type="Animation" id="Animation_x2h6g"]
+resource_name = "Scissors Hover"
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Scissors:scale")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.5, 1),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Vector2(0.2, 0.2), Vector2(0.3, 0.3), Vector2(0.2, 0.2)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_7dr51"]
+_data = {
+"PaperHover": SubResource("Animation_mqj78"),
+"RESET": SubResource("Animation_8m3i7"),
+"RockHover": SubResource("Animation_jcaq8"),
+"Scissors Hover": SubResource("Animation_x2h6g")
+}
+
+[node name="Buttons" type="Node2D"]
+script = ExtResource("1_syhpx")
+
+[node name="Paper" type="Sprite2D" parent="."]
+position = Vector2(0, 96)
+scale = Vector2(0.2, 0.2)
+texture = ExtResource("1_mcap6")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="Paper"]
+root_node = NodePath("../..")
+autoplay = "RockHover"
+libraries = {
+"": SubResource("AnimationLibrary_7dr51")
+}
+
+[node name="PaperRect" type="TextureRect" parent="Paper"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -329.538
+offset_top = -325.66
+offset_right = -445.538
+offset_bottom = -464.66
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+metadata/_edit_use_anchors_ = true
+
+[node name="Scissors" type="Sprite2D" parent="."]
+position = Vector2(0, 504)
+scale = Vector2(0.2, 0.2)
+texture = ExtResource("3_covo5")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="Scissors"]
+root_node = NodePath("../..")
+libraries = {
+"": SubResource("AnimationLibrary_7dr51")
+}
+
+[node name="ScissorsRect" type="TextureRect" parent="Scissors"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -329.538
+offset_top = -325.66
+offset_right = -445.538
+offset_bottom = -464.66
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+metadata/_edit_use_anchors_ = true
+
+[node name="Rock" type="Sprite2D" parent="."]
+position = Vector2(0, 301)
+scale = Vector2(0.2, 0.2)
+texture = ExtResource("2_pp5dm")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="Rock"]
+root_node = NodePath("../..")
+libraries = {
+"": SubResource("AnimationLibrary_7dr51")
+}
+
+[node name="RockRect" type="TextureRect" parent="Rock"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -329.538
+offset_top = -325.66
+offset_right = -445.538
+offset_bottom = -464.66
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+metadata/_edit_use_anchors_ = true
+
+[connection signal="mouse_entered" from="Paper/PaperRect" to="." method="_on_paper_rect_mouse_entered"]
+[connection signal="mouse_exited" from="Paper/PaperRect" to="." method="_on_paper_rect_mouse_exited"]
+[connection signal="mouse_entered" from="Scissors/ScissorsRect" to="." method="_on_scissors_rect_mouse_entered"]
+[connection signal="mouse_exited" from="Scissors/ScissorsRect" to="." method="_on_scissors_rect_mouse_exited"]
+[connection signal="mouse_entered" from="Rock/RockRect" to="." method="_on_rock_rect_mouse_entered"]
+[connection signal="mouse_exited" from="Rock/RockRect" to="." method="_on_rock_rect_mouse_exited"]

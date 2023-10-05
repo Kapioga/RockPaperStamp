@@ -12,4 +12,4 @@ func _process(delta):
 	pass
 	
 func logic():
-	if buttons(ho)
+	
