@@ -1,8 +1,9 @@
-[gd_scene load_steps=4 format=3 uid="uid://dtpf40o360s6c"]
+[gd_scene load_steps=5 format=3 uid="uid://dtpf40o360s6c"]
 
 [ext_resource type="Script" path="res://Script/main_game.gd" id="1_17aaj"]
 [ext_resource type="PackedScene" uid="uid://h3gsar3owbo5" path="res://Scenes/player.tscn" id="1_uw5ou"]
 [ext_resource type="PackedScene" uid="uid://b6viirqoxiv1i" path="res://Scenes/enemy.tscn" id="3_x2rl5"]
+[ext_resource type="PackedScene" uid="uid://b5l4rwgojkc8i" path="res://buttons.tscn" id="4_56ele"]
 
 [node name="Main Game" type="Node2D"]
 script = ExtResource("1_17aaj")
@@ -12,3 +13,5 @@ position = Vector2(242, 352)
 
 [node name="Enemy" parent="." instance=ExtResource("3_x2rl5")]
 position = Vector2(871, 383)
+
+[node name="Buttons" parent="." instance=ExtResource("4_56ele")]
