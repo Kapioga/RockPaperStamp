@@ -1,18 +1,26 @@
 [gd_scene load_steps=3 format=3 uid="uid://b5l4rwgojkc8i"]
 
-[ext_resource type="Script" path="res://buttons.gd" id="1_svdj7"]
+[ext_resource type="Script" path="res://Script/buttons.gd" id="1_n3ops"]
 [ext_resource type="Texture2D" uid="uid://c5i4y1i887ve2" path="res://Assets/Test Assets/RockTest.png" id="2_mo8cu"]
 
 [node name="Buttons" type="Node"]
-script = ExtResource("1_svdj7")
+script = ExtResource("1_n3ops")
 
 [node name="Rock Button" type="TextureButton" parent="."]
-offset_left = 506.0
-offset_top = 120.0
-offset_right = 1281.0
-offset_bottom = 927.0
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -413.0
+offset_top = -601.0
+offset_right = 362.0
+offset_bottom = 206.0
+grow_horizontal = 2
+grow_vertical = 2
 scale = Vector2(0.2, 0.2)
-size_flags_horizontal = 4
+pivot_offset = Vector2(405, 395)
+size_flags_horizontal = 0
 size_flags_vertical = 4
 texture_normal = ExtResource("2_mo8cu")
 stretch_mode = 3

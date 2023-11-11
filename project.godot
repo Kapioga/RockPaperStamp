@@ -15,6 +15,10 @@ run/main_scene="res://Scenes/main_game.tscn"
 config/features=PackedStringArray("4.1", "Mobile")
 config/icon="res://icon.svg"
 
+[autoload]
+
+Gamelogic="*res://Script/gamelogic.gd"
+
 [input]
 
 Click!={

@@ -25,3 +25,4 @@ func _on_rock_button_mouse_exited():
 func _on_rock_button_pressed():
 	Rock_signal.emit()
 	print("Pressed!")
+	Gamelogic.rock_signal()
