@@ -1,8 +1,10 @@
-[gd_scene load_steps=2 format=3 uid="uid://b6viirqoxiv1i"]
+[gd_scene load_steps=3 format=3 uid="uid://b6viirqoxiv1i"]
 
+[ext_resource type="Script" path="res://Scenes/enemy.gd" id="1_aqpiy"]
 [ext_resource type="Texture2D" uid="uid://cul0ulwk3dvkk" path="res://Assets/Test Assets/Fish Guy.png" id="1_wqrs0"]
 
 [node name="Enemy" type="Node2D"]
+script = ExtResource("1_aqpiy")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 scale = Vector2(0.2, 0.2)
