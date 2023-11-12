@@ -1,7 +1,9 @@
 extends Node
 
-@onready var enemy_node = get_node("res://Scenes/enemy.tscn")
+signal enemy_decision
 
+@onready var enemy_node = get_node("res://Scenes/enemy.tscn")
+var en_test = preload("res://Scenes/enemy.gd")
 var rock_data = false
 
 func enemy_resolve():
@@ -10,7 +12,8 @@ func enemy_resolve():
 func rock_signal():
 	print("Global signal sent!")
 	rock_data = true
-	print(rock_data)
+	print("Data now set to: " + str(rock_data))
+	print(enemy_decision)
 
 func scissors_signal():
 	pass
